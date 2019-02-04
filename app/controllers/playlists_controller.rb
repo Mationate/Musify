@@ -10,6 +10,8 @@ class PlaylistsController < ApplicationController
   # GET /playlists/1
   # GET /playlists/1.json
   def show
+    @song = Song.new
+    @playlist_songs = @playlist.songs
   end
 
   # GET /playlists/new

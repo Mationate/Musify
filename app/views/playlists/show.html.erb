@@ -12,3 +12,24 @@
 
 <%= link_to 'Edit', edit_playlist_path(@playlist) %> |
 <%= link_to 'Back', playlists_path %>
+
+<h4>Ingrese una canción</h4>
+<%= form_with(model: [@playlist, @song], local: true) do |f| %>
+  <%= f.label :artist, "artist" %>
+  <%= f.text_field :artist %>
+
+  <%= f.label :name, "name" %>
+  <%= f.text_field :name %>
+
+  <%= f.submit %>
+<% end %>
+
+<ol class="list-group">
+  <% @playlist_songs.each do |song|  %>
+    <li class="list-group-item">
+      <%= song.artist %> | <%= song.name %> <%= link_to playlist_song_path(@playlist, song), data: {method: :delete, confirm: 'seguro?'} do %>
+        <span class="badge badge-danger">Borrar</span>
+      <% end %> 
+    </li>
+  <% end %>
+</ol>
