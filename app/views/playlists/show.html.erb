@@ -28,8 +28,16 @@
   <% @playlist_songs.each do |song|  %>
     <li class="list-group-item">
       <%= song.artist %> | <%= song.name %> <%= link_to playlist_song_path(@playlist, song), data: {method: :delete, confirm: 'seguro?'} do %>
-        <span class="badge badge-danger">Borrar</span>
-      <% end %> 
+        <span class="badge badge-danger">Borrar</span>      <% end %> 
+      
+      <% if song.favourite? %>
+        <span class="badge badge-success">*</span>
+      <% else %>
+        <%= link_to set_favourite_playlist_song_path(@playlist, song), method: :patch do %> 
+          <span class="badge badge-warning">Marcar favorito</span>
+        <% end %>
+      <% end %>
+
     </li>
   <% end %>
 </ol>

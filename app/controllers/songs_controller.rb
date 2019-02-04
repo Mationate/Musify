@@ -14,6 +14,14 @@ class SongsController < ApplicationController
     redirect_to song.playlist, notice: 'Se ha eliminado la canción'
   end
   
+  def set_favourite
+    song = Song.find(params[:id])
+    song.favourite = true
+    song.save
+    redirect_to song.playlist, notice: 'Canción guardada a favoritos :D'
+    
+  end
+  
   private
   def song_params
     params.require(:song).permit(:artist, :name)
