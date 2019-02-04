@@ -2,11 +2,12 @@
 
 <h1>Users</h1>
 
-<table>
-  <thead>
+<table class="table table-hover">
+  <thead class="thead-dark">
     <tr>
       <th>Name</th>
       <th>Email</th>
+      <th>Playlists</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,9 +17,10 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= user.playlists.count %></td>
+        <td><%= link_to 'Show', user, class:"badge badge-success" %></td>
+        <td><%= link_to 'Edit', edit_user_path(user), class:"badge badge-info" %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class:"badge badge-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New User', new_user_path, class:"badge badge-primary" %>
